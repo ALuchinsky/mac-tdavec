@@ -1,7 +1,7 @@
 import unittest
 
-from tdavec import TDAvectorizer, tdavec_core, createEllipse
-from tdavec.tdavec_core import computeNormalizedLife, computeBettiCurve, computePersistenceBlock, computePersistenceLandscape, computePersistenceSilhouette, \
+from mac_tdavec import TDAvectorizer, tdavec_core, createEllipse
+from mac_tdavec.tdavec_core import computeNormalizedLife, computeBettiCurve, computePersistenceBlock, computePersistenceLandscape, computePersistenceSilhouette, \
     computeEulerCharacteristic, computePersistentEntropy, computePersistenceImage, computeComplexPolynomial, computeFDA, computeTropicalCoordinates, computeTemplateFunction
 import ripser
 import numpy as np
