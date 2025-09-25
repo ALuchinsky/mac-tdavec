@@ -76,6 +76,7 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          use-oidc: false   # <-- disables OIDC, uses only token
           repository-url: https://test.pypi.org/legacy/
 
       # Publish to PyPI
@@ -84,4 +85,5 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
+          use-oidc: false   # <-- disables OIDC, uses only token
           password: ${{ secrets.PYPI_API_TOKEN }}
