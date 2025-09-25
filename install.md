@@ -40,3 +40,5 @@ Note that you have to have your API token created and saved to ~/.pypic file
     twine check dist/*
     # intall on testpypi
     pip install --index-url https://test.pypi.org/simple/ --no-deps mac_tdavec
+    # install on pypi
+    

@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mac_tdavec"
-version = "0.9.1"
+version = "1.0.0"
 dependencies = [
     "numpy",
     "ripser"
