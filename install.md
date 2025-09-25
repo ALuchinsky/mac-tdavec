@@ -26,3 +26,17 @@ In order to check if the intallation process was completed, you can run python a
     > X, D, PS = test_package()
 
 This function will create a simple point cloud, build a persistence diagram, caclulate the Persistence Silhouette vectorization from it, and return these three objects.
+
+
+# Installing on PyPi
+
+Note that you have to have your API token created and saved to ~/.pypic file
+
+    # cleaning
+    rm -rf dist/ *.egg-info/
+    rm mac_tdavec/*.so
+    # build
+    python -m build
+    twine check dist/*
+    # intall on testpypi
+    pip install --index-url https://test.pypi.org/simple/ --no-deps mac_tdavec

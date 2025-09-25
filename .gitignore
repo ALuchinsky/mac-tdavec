@@ -1,2 +1,11 @@
 .DS_Store
+.ipynb_checkpoints/
+.vscode/
+dist/
+mac_tdavec.egg-info/
+mac_tdavec/.ipynb_checkpoints/
+mac_tdavec/__pycache__/
+mac_tdavec/tdavec_core.c
+mac_tdavec/tdavec_core.cpython-311-darwin.so
+sample_notebooks/.ipynb_checkpoints/
 

@@ -9,7 +9,7 @@ extensions = [
 
 setup(
     name="mac_tdavec",
-    version="1.0.0",
+    version="0.9.1",
     packages=["mac_tdavec"],
     ext_modules=cythonize(extensions),
     zip_safe=False,
