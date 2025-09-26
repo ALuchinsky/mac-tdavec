@@ -1,8 +1,13 @@
 name: Build and Publish Wheels
-on: workflow_dispatch
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   build_wheels:
+    name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -10,28 +15,35 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11' # Or specify the range of versions you support
-      - name: Build wheels
+      
+      - name: Build wheels with cibuildwheel
         uses: pypa/cibuildwheel@v2.18
-        env:
-          CIBW_BUILD: "cp311-* cp314-*" # Example to build for CPython 3.11 and 3.14
-          CIBW_SKIP: "*-musl"
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload wheels as artifact
+        uses: actions/upload-artifact@v4
         with:
           name: cibuildwheel-wheels
           path: ./wheelhouse/*.whl
-
+          
   publish:
+    name: Publish to PyPI
     needs: build_wheels
     runs-on: ubuntu-latest
+    
+    # Add this block to grant OIDC token permissions for this job
+    permissions:
+      id-token: write
+      
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download all wheels
+        uses: actions/download-artifact@v4
         with:
           name: cibuildwheel-wheels
           path: ./dist
-      - uses: pypa/gh-action-pypi-publish@v1.9.0
+          
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
+          packages_dir: ./dist
