@@ -1,6 +1,7 @@
+# pyproject.toml
 [build-system]
 requires = [
-    "setuptools>=61.0",
+   "setuptools>=61.0",
     "wheel",
     "Cython",
     "numpy"
@@ -9,22 +10,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mac_tdavec"
-version = "1.1.0"
+version = "1.0.0"
 dependencies = [
-    "ripser",
-    # Although numpy is a build dependency (for Cython),
-    # it is also a runtime dependency for a package like this.
-    # We specify it here to ensure it is installed for users.
-    "numpy"
+    "numpy",
+    "ripser"
 ]
 readme = "README.md"
 requires-python = ">=3.11"
 
 [tool.setuptools]
 packages = ["mac_tdavec"]
-
-[tool.cibuildwheel]
-# This section is where you would configure cibuildwheel
-# if you need to override its defaults.
-# For example, to build only specific Python versions:
-build = "cp311-* cp312-*"
